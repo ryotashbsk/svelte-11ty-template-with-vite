@@ -1,0 +1,34 @@
+// font-family
+$base-font: 'Yu Gothic', YuGothic, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+$en-font: 'Spectral', serif;
+
+// font-size
+$fs-pc: 14;
+$fs-sp: 14;
+
+// color
+$base-color: #000;
+$white: #fff;
+$red: #e60012;
+$green: #43a285;
+$navy: #1a2653;
+$beige: #f1eae0;
+
+// img path
+$assets-path: '/assets/';
+$img-path: $assets-path + 'images/';
+
+// blank
+$top-bottom-blank: 200;
+$side-blank: 40;
+$sp-top-bottom-blank: 220;
+$sp-side-blank: 20;
+
+// width
+$pc-width: 1366;
+$sp-width: 414;
+
+// easing
+$easeCustom: cubic-bezier(0.4, 0.1, 0.2, 1);
+$easeOutCubic: cubic-bezier(0.25, 1, 0.12, 1);
+$easeBounce: cubic-bezier(0.16, 1.3, 0.66, 1);

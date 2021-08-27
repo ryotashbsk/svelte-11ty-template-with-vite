@@ -1,0 +1,8 @@
+lang: ja
+name: SITE_NAME
+title: SITE_TITLE
+type: website
+url: https://example.com/
+image: https://example.com/assets/images/og.png
+favicon: /assets/images/favicons/favicon.ico
+apple_touch_icon: /assets/images/favicons/apple-touch-icon-180x180.png

@@ -1,0 +1,224 @@
+@use "sass:math";
+@use 'variable' as var;
+
+/*
+ * Line Clump
+ */
+
+@mixin line-clump($row) {
+  display: -webkit-box;
+  -webkit-line-clamp: $row;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/*
+ * Puseudo Elements
+ */
+
+@mixin psd-elm {
+  display: block;
+  content: '';
+}
+
+/*
+ * bg
+ */
+
+@mixin bg-cover($pos) {
+  background-size: cover;
+  background-position: $pos;
+  background-repeat: no-repeat;
+}
+
+@mixin bg-contain($pos) {
+  background-size: contain;
+  background-position: $pos;
+  background-repeat: no-repeat;
+}
+
+/*
+ * transform
+ */
+
+@mixin tsf($transforms) {
+  transform: $transforms;
+}
+
+@mixin rotate($deg) {
+  @include tsf(rotate(#{$deg}deg));
+}
+
+@mixin scl($scale) {
+  @include tsf(scale($scale));
+}
+
+@mixin scl-x($x) {
+  @include tsf(scaleX($x));
+}
+
+@mixin scl-y($y) {
+  @include tsf(scaleY($y));
+}
+
+@mixin tsl($x, $y) {
+  @include tsf(translate($x, $y));
+}
+
+@mixin tsl-x($x) {
+  @include tsf(translateX($x));
+}
+
+@mixin tsl-y($y) {
+  @include tsf(translateY($y));
+}
+
+@mixin skew($x, $y) {
+  @include tsf(skew(#{$x}deg, #{$y}deg));
+}
+
+@mixin tsf-origin($origin) {
+  transform-origin: $origin;
+}
+
+/*
+ * transition
+ */
+
+@mixin ts($transition...) {
+  transition: $transition;
+}
+
+@mixin delay($delay) {
+  transition-delay: $delay;
+}
+
+@mixin chiratsuki {
+  backface-visibility: hidden;
+}
+
+@mixin block-c {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+ * flex
+ */
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
+ * placeholder
+ */
+
+@mixin placeholder($color) {
+  &::placeholder {
+    color: $color;
+  }
+  // IE
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  // Edge
+  &::-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+/*
+ * 汎用計算用関数
+ */
+
+@function vw($size, $base) {
+  @return math.div($size, $base) * 100vw;
+}
+
+@function per($size, $base) {
+  @return math.div($size, $base) * 100%;
+}
+
+@function vw_pc($size) {
+  @return math.div($size, var.$pc-width) * 100vw;
+}
+
+@function vw_sp($size) {
+  @return math.div($size, var.$sp-width) * 100vw;
+}
+
+@function vh_pc($size) {
+  @return math.div($size, 900) * 100vh;
+}
+
+@function rem($size) {
+  @return math.div($size, var.$fs-pc) * 1rem;
+}
+
+@function em($size) {
+  @return math.div($size, var.$fs-pc) * 1em;
+}
+
+/*
+ * ブレイクポイントの初期設定
+ */
+
+$breakpoints: (
+  'mobile-s': 414,
+  'mobile': 750,
+  'tablet': 768,
+  'tablet-l': 840,
+  'tablet-xl': 1000,
+  'desktop-s': 1100,
+  'desktop': 1200,
+  'desktop-l': 1366,
+  'desktop-xl': 1920
+) !default;
+
+@mixin mq($mq, $bp1: tablet, $bp2: desktop) {
+  $w1: map-get($breakpoints, $bp1);
+  $w2: map-get($breakpoints, $bp2);
+  $min1: 'min-width: #{convert-em($w1, 1)}';
+  $min2: 'min-width: #{convert-em($w1, 1)}';
+  $max1: 'max-width: #{convert-em($w1)}';
+  $max2: 'max-width: #{convert-em($w2)}';
+
+  @if $mq==min {
+    @media ($min1) {
+      @content;
+    }
+  } @else if $mq==max {
+    @media ($max1) {
+      @content;
+    }
+  } @else if $mq==min-max {
+    @media ($min2) and ($max2) {
+      @content;
+    }
+  }
+}
+
+/*
+ * pxからemに変換
+ */
+
+@function convert-em($width, $ge: 0) {
+  @return '#{math.div(($width + $ge),16)}em';
+}
+
+/*
+ * random
+ */
+
+@function minMaxRandom($min: 1, $max: 100) {
+  $num: random($max);
+
+  @while ($num/($num * 0 + 1) < $min) {
+    $num: random($max);
+  }
+
+  @return $num;
+}

@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+
+<title>{{ title or site.title or site.name }}</title>
+<meta name="description" content="{{ description or site.description }}">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no">
+
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta http-equiv="content-language" content="{{ site.lang }}">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<meta name="format-detection" content="telephone=no">
+
+<meta property="og:title" content="{{ title or site.title }}" />
+<meta property="og:type" content="{{ type or site.type }}" />
+<meta property="og:url" content="{{ url or site.url }}" />
+<meta property="og:image" content="{{ image or site.image }}" />
+<meta property="og:site_name" content="{{ name or site.name }}" />
+<meta property="og:description" content="{{ description or site.description }}" />
+
+<link rel="icon" href="{{ site.favicon }}" type="image/x-icon">
+<link rel="apple-touch-icon" href="{{ site.apple_touch_icon }}" sizes="180x180">
+
+{% if build.env == "development" %}
+<script type="module" src="/src/scripts/main.js"></script>
+{% endif %}
+
+{% if build.env == "production" %}
+<link rel="stylesheet" href="{% ManifestMainCss %}">
+<script type="module" src="{% ManifestMainJS %}" async></script>
+{% endif %}

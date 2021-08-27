@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+  <head>
+    {% include "head.njk" %}
+  </head>
+  <body class="preload">
+		{% include "header.njk" %}
+    {{ content | safe }}
+    {% include "footer.njk" %}
+  </body>
+</html>
