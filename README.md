@@ -1,4 +1,4 @@
-# Static site template with Svelte + 11ty + Vite
+# Static site template [Svelte / 11ty / Vite]
 
 static site generator: [11ty](https://www.11ty.dev/)  
 frontend framework: [Svelte](https://svelte.dev/)  
