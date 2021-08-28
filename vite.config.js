@@ -11,7 +11,10 @@ export default defineConfig({
 
   build: {
     // ビルド先
-    outDir: config.outputPath,
+    outDir: `${config.outputPath}/${config.assetsPath}`,
+
+    // アセットパス
+    assetsDir: '.',
 
     // outDirにmanifest.jsonを作成
     manifest: true,
