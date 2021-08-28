@@ -31,7 +31,7 @@ module.exports = function (eleventyConfig) {
   });
 
   // manifest.json取得
-  const manifestPath = path.resolve(__dirname, `${config.outputPath}/${config.assetsPath}/manifest.json`);
+  const manifestPath = path.resolve(__dirname, `${config.outputPath}/manifest.json`);
   const manifest = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, { encoding: 'utf8' })) : '';
 
   // manifest.jsonの値を11tyにショートコードとして渡す
