@@ -1,8 +1,9 @@
 const { config } = require('../config');
 const rimraf = require('rimraf');
+const manifest = `${config.outputPath}/${config.assetsPath}/manifest.json`;
 
-rimraf(`./${config.outputPath}/manifest.json`, () => {
+rimraf(manifest, () => {
   const yellow = '\u001b[33m';
   var reset = '\u001b[0m';
-  console.log(`${yellow}rimraf ${config.outputPath}/manifest.json ${reset}`);
+  console.log(`${yellow}rimraf ${manifest} ${reset}`);
 });
