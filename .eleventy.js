@@ -90,7 +90,7 @@ module.exports = function (eleventyConfig) {
       data: 'data',
 
       // テンプレートのビルド先
-      output: 'dist'
+      output: config.outputPath
     }
   };
 };
