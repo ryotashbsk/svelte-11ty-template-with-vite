@@ -35,7 +35,7 @@ module.exports = function (eleventyConfig) {
   const manifest = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, { encoding: 'utf8' })) : '';
 
   // manifest.jsonの値を11tyにショートコードとして渡す
-  eleventyConfig.addNunjucksShortcode('ManifestMainCss', () => manifest[config.entryPoint]['css']);
+  eleventyConfig.addNunjucksShortcode('ManifestMainCSS', () => manifest[config.entryPoint]['css']);
   eleventyConfig.addNunjucksShortcode('ManifestMainJS', () => manifest[config.entryPoint]['file']);
 
   // htmlの圧縮（production時）
